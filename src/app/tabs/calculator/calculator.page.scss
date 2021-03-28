@@ -1,0 +1,96 @@
+  /* add css code*/
+  form {
+    background-color: #1f1f1f;
+  }
+
+  table {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+
+  #calculator {
+    position: absolute;
+    max-width: 80%;
+    left: 58%;
+    top: 10%;
+  }
+
+  input {
+    outline: 0;
+    position: relative;
+    border: 0;
+    color: #a0a0a0;
+    background-color: #a0a0a017;
+    width: calc(25% - 10px);
+    height: 60px;
+    float: left;
+    font-size: 20px;
+    box-shadow: 0 4px rgb(0 0 0 / 20%);
+    margin: 5px;
+    border-radius: 4px;
+  }
+
+  /* add input hover effectg */
+  input:hover {
+    border: 0 solid #000;
+    color: #495069;
+    background-color: #428cff24;
+    box-shadow: 0 4px #428cff8f;
+  }
+
+  #answer {
+    width: calc(100% - 10px);
+    height: calc(100vh - 347px);
+    font-size: 26px;
+    text-align: center;
+    float: left;
+  }
+
+  /* answer hover effect */
+  #answer:hover {
+    background-color: #a0a0a017;
+    box-shadow: none;
+    color: #a0a0a0;
+  }
+
+  .operator {
+    background-color: #f1ff92;
+    position: relative;
+    color: black;
+  }
+
+  /* hover */
+  .operator:hover {
+    background-color: #e7f56b;
+    box-shadow: 0 4px #b7c259;
+  }
+
+  #clear {
+    float: left;
+    position: relative;
+    display: block;
+    background-color: #f44336;
+    color: black;
+  }
+
+  /* hover */
+  #clear:hover {
+    float: left;
+    display: block;
+    background-color: #f4433687;
+    box-shadow: 0 4px #cc7f86;
+  }
+
+  #content-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+
+  #doit {
+    background-color: #4187f6;
+    color: white;
+  }
