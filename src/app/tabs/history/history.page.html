@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>history</ion-title>
+    <ion-title class="ion-text-center">History</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content #content>
+  <!-- List of Text with history calculator -->
+  <ion-list>
+    <ion-item *ngFor="let item of appService.history" (click)="abrir(item)" [routerLink]="['/tabs/calculator']"
+      class="ion-text-end">
+      <ion-label>{{(item.type=='e')?item.val:'='+item.val}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button *ngIf="appService.history.length>0" (click)="borrarTodo()" expand="full">Clear history</ion-button>
 </ion-content>

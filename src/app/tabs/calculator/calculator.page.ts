@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, SimpleChange } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -7,7 +7,6 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./calculator.page.scss'],
 })
 export class CalculatorPage implements OnInit {
-  resultText: String = '';
   @ViewChild('form') form: ElementRef;
   @ViewChild('resInput') resInput: ElementRef;
   constructor(private appService: AppService) { }
@@ -15,10 +14,31 @@ export class CalculatorPage implements OnInit {
   ngOnInit() {
   }
 
-  resultado(res) {
-    this.appService.history.push(this.resInput.nativeElement.value);
-    this.resInput.nativeElement.value = eval(this.resInput.nativeElement.value);
-    this.appService.history.push(this.resInput.nativeElement.value);
+  agregar(tecla) {
+    if (this.appService.value != 'Math Error') {
+      this.appService.value += tecla;
+    } else {
+      this.appService.value = tecla;
+    }
   }
 
+  resultado() {
+    if (this.appService.value != 'Math Error') {
+      // e = expresión, r = respuesta
+      this.appService.history.push({ type: 'e', val: this.resInput.nativeElement.value });
+      try {
+        this.appService.value = eval(this.resInput.nativeElement.value);
+      } catch (error) {
+        this.appService.value = 'Math Error';
+      }
+      this.appService.history.push({ type: 'r', val: this.appService.value });
+      localStorage.setItem("history", JSON.stringify(this.appService.history));
+    } else {
+      this.appService.value = '';
+    }
+  }
+
+  borrar() {
+    this.appService.value = '';
+  }
 }
